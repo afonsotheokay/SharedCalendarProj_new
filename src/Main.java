@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.io.*;
 
-
-hey
 public class Main {
     private static final String CREATE_COM = "create";
     private static final String SCHEDULE_COM = "schedule";
@@ -10,6 +8,7 @@ public class Main {
     private static final String SHOW_COM = "show";
     private static final String TOP_COM = "top";
     private static final String EXIT_COM = "exit";
+    private static final String INVALID_COM = "Invalid command";
 
 
     //    Reads input line
@@ -46,6 +45,7 @@ public class Main {
         int day = inp.nextInt();
         int sHour = inp.nextInt();
         int eHour = readNextInt(inp);
+
         Events ev = new Events(eventName,sHour,eHour);
         int nParticipants = readNextInt(inp);
         for (int j = 0; j < nParticipants; j++){
@@ -53,6 +53,7 @@ public class Main {
             if(j == 0) ev.addProposer(pName);
             if (!checkUser(pName)) j--;
             else checkSchedule(pName,ev);
+//                TODO
         }
     }
 
@@ -61,8 +62,9 @@ public class Main {
         String fileName = inp.nextLine();
         FileReader file = new FileReader(fileName);
         Scanner inpFile = new Scanner(file);
+        String option;
         do {
-            String option = inpFile.next();
+            option = inpFile.next();
             switch (option) {
                 case CREATE_COM -> createScenario(inpFile);
                 case SCHEDULE_COM -> scheduleScenario(inpFile);
@@ -73,8 +75,9 @@ public class Main {
                     break;
                 default:
                     System.out.println(INVALID_COM);
-            }inp.nextLine();
-        }while (!option.equals(EXIT_COM));
+            }
+            inp.nextLine();
+        } while (!option.equals(EXIT_COM));
         //execute again with System.in
 
     }

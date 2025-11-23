@@ -7,4 +7,9 @@ public class User {
         this.name = name;
     }
 
+
+    //    Method to check if one user equals another
+    public boolean isUser(String anotherUser){
+        return name.equals(anotherUser);
+    }
 }
