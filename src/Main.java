@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.*;
 //a
 public class Main {
+    private static final String teste = "teste"
     private static final String CREATE_COM = "create";
     private static final String SCHEDULE_COM = "schedule";
     private static final String CANCEL_COM = "cancel";
